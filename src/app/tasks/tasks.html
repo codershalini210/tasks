@@ -1,0 +1,32 @@
+<div class="container text-center">
+  <img src="../../../task.jfif" alt="Task" />
+  <div class="container">
+    <h4>Tasks backlog</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Task ID</th>
+          <th>Task name</th>
+          <th>Deliver by</th>
+          <th>Count</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of tasks; let i = index">
+          <th scope="row">{{i}}</th>
+          <td>{{ task.name | slice:0:35 }}
+            <span [hidden]="task.name.length < 35">...</span>
+          </td>
+          <td>
+            {{ task.deadline | date:'fullDate' }}
+            <span *ngIf="task.deadline < today" class="label label-danger">
+              Due
+            </span>
+          </td>
+          <td class="text-center">
+            {{ task.noRequired }}
+          </td>
+          <td>[Future options...]</td>
+      </tbody>
+    </table>
