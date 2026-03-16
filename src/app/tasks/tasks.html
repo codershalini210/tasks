@@ -5,11 +5,24 @@
       <h3>
         {{queuedTasks | i18nPlural:queuedHeaderMapping}}
         for today
+        
         <span class="small" *ngIf="queuedTasks > 0">
-          (Estimated time: {{ queuedTasks * timerMinutes}} minutes)
+          (Estimated time: {{ queuedTasks * timerMinutes | formattedTime}})
         </span>
       </h3>
     </div>
+        <p>
+      <span *ngFor="let queuedTask of tasks">
+        <app-tasks-icons
+        [task]="queuedTask"
+        size="50"
+        (mouseover)="tooltip.innerText = queuedTask.name"
+        (mouseout)="tooltip.innerText = 'Mouseover for details'">
+        </app-tasks-icons>
+      </span>
+    </p>
+    <p #tooltip [hidden]="queued === 0" class = text-info>Mouseover for details</p>
+
 
   <div class="container">
     <h4>Tasks backlog</h4>

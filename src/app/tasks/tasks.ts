@@ -3,9 +3,11 @@ import {CommonModule} from '@angular/common'
 import { SlicePipe } from '@angular/common';
 import { TaskModel } from './task-model';
 import { TaskService } from './task-service';
+import { TasksIcons } from './tasks-icons/tasks-icons';
+import { FormattedTimePipe } from "./formatted-time-pipe";
 @Component({
   selector: 'app-tasks',
-  imports: [CommonModule,SlicePipe],
+  imports: [CommonModule,SlicePipe,TasksIcons,FormattedTimePipe],
   templateUrl: './tasks.html',
   styleUrl: './tasks.css',
 })
